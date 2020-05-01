@@ -1,77 +1,75 @@
 body{
-    margin: 0px 0;
-    padding: 150px 10px 1px 0px;
-   }
+   margin: 0px 0;
+   padding: 150px 10px 1px 0px;
+  }
 #date, 
 #temp, 
 #city {
-   line-height: 20px;
-     }
+  line-height: 20px;
+    }
 #date, #city {
-   font-family: 'Montserrat', sans-serif;;
-   font-size: 14px;
-   font-weight: 900;
-   color: #00796B; 
-   top: 50px;
+  font-family: 'Montserrat', sans-serif;;
+  font-size: 14px;
+  font-weight: 900;
+  color: #00796B; 
+  top: 50px;
 }
 #main {
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(29,9,121,1) 35%, rgba(0,212,255,1) 100%);
-   opacity: 0.9;
-   margin-left: 1px;
-   margin-right: 1px;
-   padding-right: 0px;
-   border-radius: 5px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(29,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  opacity: 0.9;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding-right: 0px;
+  border-radius: 5px;
 }
 #icon {
-   position: relative;
-   color: #00796B; 
-   display: block;
-   top: 28px;
-   padding-left: 10px;
-   opacity: 0.5;
+  position: relative;
+  color: #00796B; 
+  display: block;
+  top: 28px;
+  padding-left: 10px;
+  opacity: 0.5;
 }
 #number {
-   position: relative;
-   top: -20px;
-   text-align: center;
-   font-family: 'Baloo Thambi 2', cursive;
-   font-size: 100px;
-   font-weight: 900;
-   color: #212121;
+  position: relative;
+  top: -20px;
+  text-align: center;
+  font-family: 'Baloo Thambi 2', cursive;
+  font-size: 100px;
+  font-weight: 900;
+  color: #212121;
 }
 #scale {
-   position: relative;
-   top: -50px;
-   text-align: center;
-   font-family: 'Baloo Thambi 2', cursive;
-   font-size: 50px;
-   font-weight: 500;
-   color: #212121;
+  position: relative;
+  top: -50px;
+  text-align: center;
+  font-family: 'Baloo Thambi 2', cursive;
+  font-size: 50px;
+  font-weight: 500;
+  color: #212121;
 }
 #date{
-   text-align: left;
+  text-align: left;
 }
 #city{
-   text-align: right;
+  text-align: right;
 }
 .card-group {
-   display: flex;
-   padding-top: 20px;
-   margin: 3px;
+  display: flex;
+  padding-top: 20px;
+  margin: 3px;
 }
 #six{
-   text-align: center;
-   line-height: 18px;
-   top: 15px;
+  text-align: center;
+  line-height: 18px;
+  top: 15px;
 }
 #sixicon{
-   font-size: 30px;
-   color: #00BCD4
+  font-size: 30px;
+  color: #00BCD4
 }
-footer{
-   font-size: 12px;
-   display: block;
-   text-align: center;
-
-
+#rodape, #git-link{
+  font-size: 12px;
+  display: block;
+  text-align: center;
 }

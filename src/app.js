@@ -93,7 +93,6 @@ function getCountry(response) {
    countryElement.innerHTML = `${country}`;
   }  
 
-
 //C. MIDDLE: TEMPERATURE WITH LIVE DATA
 //C.01 Get the Temperature Current Location 
 function getTemp(response) {
@@ -148,5 +147,4 @@ function showcel(event) {
 
   document.getElementById("cel-link").id = "fah-link";
  }
-
 
