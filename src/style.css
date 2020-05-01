@@ -2,26 +2,89 @@ body{
    margin: 0px 0;
    padding: 150px 10px 1px 0px;
   }
+#search-engine{
+   border-bottom: 1px solid gray;
+   box-shadow: 0 1px 0 0 gray;
+   color: grey;
+   flex: 0 0 100%;
+   max-width: 80%;
+   }
+#search-box{
+   line-height: 36px;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   border: none;
+   border-radius: 0px;
+   flex: 0 0 60%;
+   max-width: 100%;
+}
+#search-input{
+   font-family: 'Montserrat', sans-serif;
+   font-size: 20px;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   border: none;
+   border-radius: 0px;
+   }
+#search-button{
+   font-size: 30px;
+   text-align: left;
+   margin:0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   border: none;
+   flex: 0 0 10%;
+   max-width: 10%;
+}
+#search-current{
+   font-size: 30px;
+   text-align: center;
+   margin:0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   flex: 0 0 10%;
+   max-width: 10%;
+}
+#search-scale{
+   font-size: 30px;
+   text-align: right;
+   margin:15px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   flex: 0 0 20%;
+   max-width: 20%;
+}
+#main {
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(29,9,121,1) 35%, rgba(0,212,255,1) 100%);
+   opacity: 0.9;
+   margin-left: 0px;
+   margin-top: 5px;
+   margin-right: 0px;
+   padding-right: 0px;
+   border-radius: 5px;
+   flex: 0 0 100%;
+   max-width: 80%;
+ }
+
+ #city {
+   line-height: 20px;
+   font-family: 'Montserrat', sans-serif;;
+   font-size: 30px;
+   font-weight: 900;
+   color: #00796B; 
+   top: 10px;
+   text-align: Left;
+     }
+
+
 #date, 
 #temp, 
-#city {
-  line-height: 20px;
-    }
-#date, #city {
+
+#date, {
   font-family: 'Montserrat', sans-serif;;
   font-size: 14px;
   font-weight: 900;
   color: #00796B; 
   top: 50px;
 }
-#main {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(29,9,121,1) 35%, rgba(0,212,255,1) 100%);
-  opacity: 0.9;
-  margin-left: 1px;
-  margin-right: 1px;
-  padding-right: 0px;
-  border-radius: 5px;
-}
+
 #icon {
   position: relative;
   color: #00796B; 
@@ -51,9 +114,7 @@ body{
 #date{
   text-align: left;
 }
-#city{
-  text-align: right;
-}
+
 .card-group {
   display: flex;
   padding-top: 20px;
