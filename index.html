@@ -20,14 +20,14 @@
             <div class="col-9" id="search-box">
                 <input type="search" class="form-control form-control-sm mr-3 w-75" type="text" aria-label="Search" id="search-input" placeholder="Enter the City or choose Current Location">
             </div>
-            <div class="col-1" id="search-button">
-              <i class="fas fa-search" aria-hidden="true"></i>
+            <div class="col-1">
+            <a href="#" id="search-button"><i class="fas fa-search" aria-hidden="true"></i></a>
             </div>
             <div class="col-1" id="search-current">
               <i class="fas fa-map-pin" aria-hidden="true"></i>
             </div>
             <div class="col-1" id="search-scale">
-            <p>°<span id="cel">C</span> | °<span id="far">F</span></p>
+            <p><a href="#" id="cel-link">°C</a> | <a href="#" id="far-link">°F</a></p>
             </div>
         </form>
       </div>
@@ -43,11 +43,11 @@
           </br>
           </br>
           <div id="weather-condition-other">
-            <strong><span id="weather-description">Sunny</span></strong>
+            <span id="weather-description"><strong>Sunny</strong></span>
             </br>
             Humidity: <span id="humidity">93</span>%
             </br>
-            Preciptation: <span id="preciptation">6</span>%
+            Precipitation: <span id="precipitation">6</span>%
             </br>
             Wind speed: <span id="wind">6</span>km/h
           </div>
@@ -55,7 +55,7 @@
               
         <div class="col-2" id="temp">
           <p><span id="icon"><img src="images/star.png" alt="" width="80" height="80"/></span></p>
-          <p><span id="number"></span><span id="degrees">°</span></p>
+          <p><span id="temperature"></span><span id="degrees">°</span></p>
         </div>
               
         <div class="col-6">
