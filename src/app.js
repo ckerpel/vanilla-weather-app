@@ -52,26 +52,30 @@ let nowMonth = document.querySelector("#month-day");
 search("Rio de Janeiro");
 
 //B.01 Getting Current Location info
-function getCurrentPossition(position) {
+//B.01.01 Pop Up
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(defineLocation);
+}
+//B.01.02 Log to open weather map
+function defineLocation(position) {
   let apiKey = "500879ecd691e9d1fcc3776605ed01a1";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiUrlCoord = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrlCoord).then(getCityName);
 }
-
+//B.01.03 Find de City's Name and run General function (b.99)
 function getCityName(response) {
     let city = response.data.name;
     search(city);
 }
-
 //B.02 Getting info entered by user
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#search-input");
   search(cityInputElement.value);
 }
-
 
 //B.99 General Function to call Any City 
 function search(city) {
@@ -135,7 +139,7 @@ let cityform = document.querySelector("#search-button");
 cityform.addEventListener("click", handleSubmit);
 
 let currentLink = document.querySelector("#search-current");
-currentLink.addEventListener("click", getCurrentPossition);
+currentLink.addEventListener("click", getCurrentLocation);
 
 let fahLink = document.querySelector("#fahLink");
 fahLink.addEventListener("click", displayFahTemperature);
