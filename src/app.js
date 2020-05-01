@@ -51,6 +51,28 @@ let nowMonth = document.querySelector("#month-day");
 //B.00 Predefined location
 search("Rio de Janeiro");
 
+//B.01 Getting Current Location info
+function getCurrentPossition(position) {
+  let apiKey = "500879ecd691e9d1fcc3776605ed01a1";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrlCoord = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrlCoord).then(getCityName);
+}
+
+function getCityName(response) {
+    let city = response.data.name;
+    search(city);
+}
+
+//B.02 Getting info entered by user
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-input");
+  search(cityInputElement.value);
+}
+
+
 //B.99 General Function to call Any City 
 function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
@@ -65,6 +87,7 @@ function search(city) {
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#where");
+  let countryElement = document.querySelector("#country");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let precipitationElement = document.querySelector("#precipitation");
@@ -76,6 +99,7 @@ function displayTemperature(response) {
 
   temperatureElement.innerHTML = Math.round(celTemperature);
   cityElement.innerHTML = response.data.name;
+  countryElement.innerHTML = response.data.sys.country;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   precipitationElement.innerHTML = response.data.main.humidity;
@@ -109,11 +133,13 @@ function displayCelTemperature(event) {
 let celTemperature = null;
 
 let cityform = document.querySelector("#search-button");
-cityform.addEventListener("submit", handleSubmit);
+cityform.addEventListener("click", handleSubmit);
+
+let currentLink = document.querySelector("#search-current");
+currentLink.addEventListener("click", getCurrentPossition);
 
 let fahLink = document.querySelector("#fah-link");
-fahLink.addEventListener("click", displayFahrenheitTemperature);
+fahLink.addEventListener("click", displayFahTemperature);
 
 let celLink = document.querySelector("#cel-link");
-celLink.addEventListener("click", displayCelsiusTemperature);
-
+celLink.addEventListener("click", displayCelTemperature);
