@@ -81,12 +81,13 @@ body{
    top: 0px;
    text-align: Left;
 }
-#weather-description{
+#description{
    text-align: left;
    font-family: 'Montserrat', sans-serif;
    font-size: 20px;
    font-weight: 900;
    color:#00796B;
+   text-transform: capitalize;
 }
 #weather-condition-other{
    line-height: 16px;
@@ -96,22 +97,22 @@ body{
    color: #00796B; 
    top: 0px;
    text-align: Left;
+   text-transform: capitalize;
 }
 
 #icon {
   position: relative;
   color: #00796B; 
-  display: block;
   top: 50px;
   padding-left: 0px;
-  opacity: 0.5;
+  opacity: 0.80;
 }
 #temperature {
   position: relative;
-  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   text-align: center;
   font-family: 'Baloo Thambi 2', cursive;
-  font-size: 100px;
+  font-size: 80px;
   font-weight: 900;
   color:#00796B;
 }
@@ -148,11 +149,11 @@ body{
    padding-bottom: 0px;
 }
 
-#rodape, #open-source{
+#open-source{
   font-size: 12px;
   display: block;
   text-align: center;
-  margin:0px 0px 0px 0px;
+  margin:5px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   max-width: 80%;
 }

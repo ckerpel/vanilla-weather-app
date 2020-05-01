@@ -18,16 +18,16 @@
       <div id="search-engine">
         <form class="form-inline d-flex justify-content-center md-form form-sm">
             <div class="col-9" id="search-box">
-                <input type="search" class="form-control form-control-sm mr-3 w-75" type="text" aria-label="Search" id="search-input" placeholder="Enter the City or choose Current Location">
+              <input type="search" class="form-control form-control-sm mr-3 w-75" type="text" aria-label="Search" id="search-input" placeholder="Enter the City or choose Current Location">
             </div>
             <div class="col-1">
-            <a href="#" id="search-button"><i class="fas fa-search" aria-hidden="true"></i></a>
+              <a href="#" id="search-button"><i class="fas fa-search" aria-hidden="true"></i></a>
             </div>
             <div class="col-1">
-            <a href="#" id="search-current"><i class="fas fa-map-pin" aria-hidden="true"></i></a>
+              <a href="#" id="search-current"><i class="fas fa-map-pin" aria-hidden="true"></i></a>
             </div>
             <div class="col-1" id="search-scale">
-            <p><a href="#" id="cel-link">°C</a> | <a href="#" id="far-link">°F</a></p>
+            <a href="#" id="celLink">°C</a> | <a href="#" id="farLink">°F</a>
             </div>
         </form>
       </div>
@@ -43,18 +43,16 @@
           </br>
           </br>
           <div id="weather-condition-other">
-            <span id="weather-description"><strong>Sunny</strong></span>
+            <strong><span id="description">Sunny</span></strong>
             </br>
             Humidity: <span id="humidity">93</span>%
-            </br>
-            Precipitation: <span id="precipitation">6</span>%
             </br>
             Wind speed: <span id="wind">6</span>km/h
           </div>
         </div> 
               
         <div class="col-2" id="temp">
-          <p><span id="icon"><img src="images/star.png" alt="" width="80" height="80"/></span></p>
+          <p><span id="icon"><img src="http://openweathermap.org/img/wn/09d@2x.png" alt="light intensity drizzle" width="120" height="120"/></span></p>
           <p><span id="temperature"></span><span id="degrees">°</span></p>
         </div>
               
@@ -126,10 +124,7 @@
       </div>   
     </div>  
     <footer>
-      <div id="rodape">
-        <a href="#" id="fah-link"> Click here if you prefer the temperature in Fahrenheit (°F) </a>
-      </div>
-      <div id="open-source">
+     <div id="open-source">
        <span><a href="https://github.com/ckerpel" id="git-link"> Open-source code</a></span><span> by Cássia Letícia Kerpel</span>
         </div>
       </footer>

@@ -102,7 +102,6 @@ function displayTemperature(response) {
   countryElement.innerHTML = response.data.sys.country;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  precipitationElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   //dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
@@ -124,8 +123,8 @@ function displayFahTemperature(event) {
 
 function displayCelTemperature(event) {
   event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
+  celLink.classList.add("active");
+  fahLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celTemperature);
 }
@@ -138,8 +137,8 @@ cityform.addEventListener("click", handleSubmit);
 let currentLink = document.querySelector("#search-current");
 currentLink.addEventListener("click", getCurrentPossition);
 
-let fahLink = document.querySelector("#fah-link");
+let fahLink = document.querySelector("#fahLink");
 fahLink.addEventListener("click", displayFahTemperature);
 
-let celLink = document.querySelector("#cel-link");
+let celLink = document.querySelector("#celLink");
 celLink.addEventListener("click", displayCelTemperature);
