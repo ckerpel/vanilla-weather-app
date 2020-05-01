@@ -1,15 +1,14 @@
 body{
    margin: 0px 0;
-   padding: 150px 10px 1px 0px;
+   padding: 100px 0px 0px 0px;
   }
 #search-engine{
-   border-bottom: 1px solid gray;
-   box-shadow: 0 1px 0 0 gray;
    color: grey;
    flex: 0 0 100%;
    max-width: 80%;
    }
 #search-box{
+   box-shadow: 0 1px 0 0 gray;
    line-height: 36px;
    margin: 0px 0px 0px 0px;
    padding: 0px 0px 0px 0px;
@@ -37,7 +36,7 @@ body{
 }
 #search-current{
    font-size: 30px;
-   text-align: center;
+   text-align: left;
    margin:0px 0px 0px 0px;
    padding: 0px 0px 0px 0px;
    flex: 0 0 10%;
@@ -58,31 +57,29 @@ body{
    margin-top: 5px;
    margin-right: 0px;
    padding-right: 0px;
-   border-radius: 5px;
+   padding-left: 0px;
    flex: 0 0 100%;
    max-width: 80%;
+   box-shadow: 5px 5px 4px #888888;
  }
 
- #city {
+#city {
    line-height: 20px;
-   font-family: 'Montserrat', sans-serif;;
+   font-family: 'Montserrat', sans-serif;
    font-size: 30px;
    font-weight: 900;
    color: #00796B; 
-   top: 10px;
+   padding-top: 15px;
    text-align: Left;
-     }
-
-
-#date, 
-#temp, 
-
-#date, {
-  font-family: 'Montserrat', sans-serif;;
-  font-size: 14px;
-  font-weight: 900;
-  color: #00796B; 
-  top: 50px;
+}
+#date {
+   line-height: 20px;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 16px;
+   font-weight: 600;
+   color: #00796B; 
+   top: 0px;
+   text-align: Left;
 }
 
 #icon {
@@ -93,28 +90,32 @@ body{
   padding-left: 10px;
   opacity: 0.5;
 }
+
 #number {
   position: relative;
-  top: -20px;
   text-align: center;
   font-family: 'Baloo Thambi 2', cursive;
   font-size: 100px;
   font-weight: 900;
-  color: #212121;
+  color:#00796B;
 }
-#scale {
+#degrees {
   position: relative;
-  top: -50px;
   text-align: center;
   font-family: 'Baloo Thambi 2', cursive;
   font-size: 50px;
   font-weight: 500;
-  color: #212121;
+  color:#00796B;
 }
-#date{
-  text-align: left;
+#weather-description{
+   position: relative;
+   top: -10px;
+   text-align: Left;
+   font-family: 'Baloo Thambi 2', cursive;
+   font-size: 20px;
+   font-weight: 900;
+   color:#00796B;
 }
-
 .card-group {
   display: flex;
   padding-top: 20px;
@@ -129,8 +130,20 @@ body{
   font-size: 30px;
   color: #00BCD4
 }
-#rodape, #git-link{
+#group-card-first{
+   padding-top: 10px;
+   padding-bottom: 0px;
+}
+#group-card-second{
+   padding-top: 0px;
+   padding-bottom: 0px;
+}
+
+#rodape, #open-source{
   font-size: 12px;
   display: block;
   text-align: center;
+  margin:0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  max-width: 80%;
 }
