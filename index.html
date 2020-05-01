@@ -1,17 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Weather App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="src/style.css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ac7310dbfc.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>
-      Weather App
-		</h1>
-	</div>
-</body>
+    
+      <div class="row">
+      <div class="col-6">
+     
+      <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter the City" aria-label="Recipient's username" aria-describedby="button-addon2" id="enter-city">
+      <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+      </div>
+      </div>
+            
+      <div class="row" id="main">
+      <div class="col-4" id="date">
+      <p> <span id="day-hour">Sunday, 02:43am </span></br>
+      <span id="month-day">March 28th, 2020</span>
+      </p>
+      </div>
+          
+      <div class="col-4" id="temp">
+      <span id="icon"><img src="images/star.png" alt="" width="100" height="100" /></span>
+      <span id="number"></span><span id="scale">°</span> 
+      </div>
+      
+      <div class="col-4" id="city">
+      <p><span id="where"></span><span>,</span>
+      </br>
+      <span id="country"></span>
+      </p>
+      </div>
+      </div>
+      
+      <div class="col-1" id="city"></div>
+        <div class="card-group">
+            <div class="card-body">
+                <p class="card-text">
+                <strong>Sunday</strong>
+                </br>
+                8:43 am
+                </br>
+                <i class="fas fa-cloud-sun" id="sixicon"></i>
+                </p>
+                </div>
+              
+                <div class="card-body">
+                <p class="card-text">
+                <strong>Sunday</strong>
+                </br>
+                02:43 pm
+                </br>
+                <i class="fas fa-cloud-rain" id="sixicon"></i>
+                </p>
+                </div>
+                  
+                <div class="card-body">
+                <p class="card-text">
+                <strong>Sunday</strong>
+                </br>
+                8:43 pm
+                </br>
+                <i class="fas fa-cloud-moon-rain" id="sixicon"></i>
+                </p>
+                </div>
+                
+                <div class="card-body">
+                <p class="card-text">
+                <strong>Monday</strong>
+                </br>
+                2:43 am
+                </br>
+                <i class="fas fa-cloud-sun" id="sixicon"></i>
+                </p>
+                </div>
+                        
+                <div class="card-body">
+                <p class="card-text">
+                <strong>Monday</strong>
+                </br>
+                8:43 am
+                </br>
+                <i class="fas fa-poo-storm" id="sixicon"></i>
+                </p>
+                </div>
+              
+            </div>
+            <footer id="rodape">
+              <a href="#" id="fah-link"> Click here if you prefer the temperature in Fahrenheit (°F) </a>
+            </footer>
+          </div>
+        </div>
+       
+      </div>
+    <script src="src/app.js"></script>
+  </body>
 </html>
