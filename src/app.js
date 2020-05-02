@@ -133,9 +133,7 @@ function displayTemperature(response) {
 }
 
 //C.04 Up Forecast
-//function getToday(timestamp){
-//  let hoje = new Date();
-//  today = days[hoje.getDay()];
+//C.04.01 Up Forecast
 function displayForecast(response) {
   for (let i = 1; i < 7; i ++) {
       forecast = response.data.daily[i];
@@ -152,37 +150,71 @@ function displayForecast(response) {
       icon.setAttribute('alt',`${forecast.weather[0].description}`);
   }
 }
-
-//C.03 Fahrenheit Link
+//C.04.91 Scale Settings
+//C.04.91.01 Fahrenheit
 function displayFahTemperature(event) {
   event.preventDefault();
+  //Changing Scale to main temperature 
   let temperatureElement = document.querySelector("#temperature");
-
   celLink.classList.remove("active");
   fahLink.classList.add("active");
   let fahTemperature = (celTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahTemperature);
+  //Changing Scale to Forecast Dashboard 
+  for (let j = 1; j < 7; j ++) {
+    let maxElement = document.querySelector(`#max${j}`);
+    maxCelsius = parseInt(maxElement.innerHTML, 10);
+    maxElement.innerHTML = `${Math.round((maxCelsius*9 )/5 + 32)}° | `;
+    
+    let minElement = document.querySelector(`#min${j}`);
+    minCelsius = parseInt(minElement.innerHTML, 10);
+    minElement.innerHTML = `${Math.round((minCelsius*9 )/5 + 32)}°`;
+  } 
+  fahLink.removeEventListener('click',displayFahTemperature); 
+  ceLink.addEventListener("click",displayCelTemperature); 
 }
-
-//C.04 Celsius Link
+//C.04.91.01 Celsius
 function displayCelTemperature(event) {
   event.preventDefault();
+  //Changing Scale to main temperature 
   celLink.classList.add("active");
   fahLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celTemperature);
+  //Changing Scale to Forecast Dashboard 
+  for (let j = 1; j < 7; j ++) {
+  let maxElement = document.querySelector(`#max${j}`);
+  maxFah = parseInt(maxElement.innerHTML, 10);
+  maxElement.innerHTML = `${Math.round((maxFah-32)*(5/9))}° | `;
+
+  let minElement = document.querySelector(`#min${j}`);
+  minFah = parseInt(minElement.innerHTML,10);
+  minElement.innerHTML = `${Math.round((minFah-32)*(5/9))}°`;
+  }
+  celLink.removeEventListener('click', displayCelTemperature);
+  fahLink.addEventListener("click",displayFahTemperature);
 }
 
+//X. General Actions to call the functions to update the HTML
+//X.01 Let the Link to C scale null by default
 let celTemperature = null;
 
-let cityform = document.querySelector("#search-button");
-cityform.addEventListener("click", handleSubmit);
-
-let currentLink = document.querySelector("#search-current");
-currentLink.addEventListener("click", getCurrentLocation);
-
+//X.02 Call the function when click in F link
 let fahLink = document.querySelector("#fahLink");
 fahLink.addEventListener("click", displayFahTemperature);
 
+//X.02 Call the function when click in C link
 let celLink = document.querySelector("#celLink");
 celLink.addEventListener("click", displayCelTemperature);
+
+//X.03 Call when choose set Current Location
+let currentLink = document.querySelector("#search-current");
+currentLink.addEventListener("click", getCurrentLocation);
+
+//X.04 Call when enter the city and click on search
+let cityform = document.querySelector("#search-button");
+cityform.addEventListener("click", handleSubmit);
+
+
+
+
