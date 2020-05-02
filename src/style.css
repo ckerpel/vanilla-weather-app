@@ -133,17 +133,14 @@ a {
   font-weight: 900;
   color:#00796B;
 }
-.card-group {
-  padding-top: 20px;
-  margin: 0px; 
-}
-.card-text{
-   font-weight: bold;
-   text-align: center;
-}
-.card-temp{
+.card-text, .card-temp{
+   margin: 0px 0px 0px 0px;
+   padding:0px 0px 0px 0px; 
    text-align: center;
  }
+.card-text{
+   font-weight: bold;
+}
 
 #six{
   text-align: center;
@@ -151,10 +148,7 @@ a {
   top: 15px;
 }
 
-.card-text{
-  margin: 0px 0px 0px 0px;
-  padding:0px 0px 0px 0px; 
-}
+
 
 #group-card-first{
    padding-top: 0px;
