@@ -113,7 +113,6 @@ a {
    text-align: Left;
    text-transform: capitalize;
 }
-
 #icon {
   position: relative;
   color: #00796B; 
@@ -134,36 +133,21 @@ a {
   font-weight: 900;
   color:#00796B;
 }
-#deegres {
-   position: relative;
-   top: -25px;
-   text-align: center;
-   font-family: 'Baloo Thambi 2', cursive;
-   font-size: 40px;
-   font-weight: 500;
-   color: #00796B;
-}
-
-#tempDegrees{
-   margin: 0px 0px 0px 0px; 
-   padding: 0px 0px 0px 0px;
-}
 .card-group {
   display: flex;
   padding-top: 20px;
-  margin: 3px; 
+  margin: 0px; 
+}
+.card-text{
+   font-weight: bold;
 }
 #six{
   text-align: center;
   line-height: 18px;
   top: 15px;
 }
-#sixicon{
-  font-size: 30px;
-  color: #00BCD4
-}
 #group-card-first{
-   padding-top: 10px;
+   padding-top: 15px;
    padding-bottom: 0px;
 }
 #group-card-second{
