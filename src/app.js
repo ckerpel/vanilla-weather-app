@@ -122,14 +122,36 @@ function displayTemperature(response) {
   cityElement.innerHTML = `${response.data.name}, `;
   countryElement.innerHTML = response.data.sys.country;
   descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = `${response.data.main.humidity}%`;
-  windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  windElement.innerHTML = `Wind Speed: ${Math.round(response.data.wind.speed)} km/h`;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  //Bring Date info based on the browser
+  
+  iconDayNight = response.data.weather[0].icon;
+  iconSetting = iconDayNight.slice(2);
+  console.log(iconSetting);
+
+  backgroundSetting = 'BBB';
+  console.log(backgroundSetting);
+
+  function whatColor(response){
+    return response.name;
+  }
+  
+  let settings = [
+      {Name: 'AAA' , color:'teal'},
+      {Name: 'BBB' , color:'green'},
+      {Name: 'CCC' , color:'blue'},
+      {Name: 'DDD' , color:'pink'}
+    ];
+    
+    console.log(settings.find(whatColor));
+  
+    
+   //Bring Date info based on the browser
   //nowDayElement.innerHTML = formatDate(response.data.dt * 1000) + " ,"+ formatHours(response.data.dt * 1000);
   //nowMonthElement.innerHTML = formatFullDate(response.data.dt * 1000);
 
@@ -146,6 +168,8 @@ function displayTemperature(response) {
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latForecast}&lon=${lonForecast}&appid=${apiKey}&units=metric`;
   axios.get(apiUrlForecast).then(displayForecast);
 }
+
+
 
 //C.04 Up Forecast
 //C.04.01 Up Forecast
@@ -229,7 +253,5 @@ currentLink.addEventListener("click", getCurrentLocation);
 //X.04 Call when enter the city and click on search
 let cityform = document.querySelector("#search-button");
 cityform.addEventListener("click", handleSubmit);
-
-
 
 
