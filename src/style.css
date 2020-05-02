@@ -28,7 +28,7 @@ a {
    padding: 0px 0px 0px 0px;
    border: none;
    border-radius: 0px;
-   }
+}
 #search-button{
    font-size: 30px;
    text-align: left;
@@ -46,6 +46,7 @@ a {
    flex: 0 0 10%;
    max-width: 10%;
 }
+
 #search-scale{
    font-size: 30px;
    text-align: right;
@@ -54,6 +55,15 @@ a {
    flex: 0 0 20%;
    max-width: 20%;
 }
+#search-scale .active {
+   color: rgb(41, 41, 41);
+   cursor: default;
+   font-weight: bold;
+}
+#search-scale .active:hover {
+   text-decoration: none;
+
+ }
 #main {
    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(29,9,121,1) 35%, rgba(0,212,255,1) 100%);
    opacity: 0.9;
@@ -107,33 +117,41 @@ a {
 #icon {
   position: relative;
   color: #00796B; 
+  text-align: center;
   top: 50px;
+  bottom: -10px;
+  padding: 0px 0px 0px 0px;
   padding-left: 0px;
   opacity: 0.80;
 }
-#temperature {
+#temperature{
   position: relative;
   margin: 0px 0px 0px 0px;
+  padding:0px 0px 0px 0px;
   text-align: center;
   font-family: 'Baloo Thambi 2', cursive;
   font-size: 80px;
   font-weight: 900;
   color:#00796B;
 }
-#degrees {
-  position: relative;
-  text-align: center;
-  top: -30px;
-  font-family: 'Baloo Thambi 2', cursive;
-  font-size: 50px;
-  font-weight: 500;
-  color:#00796B;
+#deegres {
+   position: relative;
+   top: -25px;
+   text-align: center;
+   font-family: 'Baloo Thambi 2', cursive;
+   font-size: 40px;
+   font-weight: 500;
+   color: #00796B;
 }
 
+#tempDegrees{
+   margin: 0px 0px 0px 0px; 
+   padding: 0px 0px 0px 0px;
+}
 .card-group {
   display: flex;
   padding-top: 20px;
-  margin: 3px;
+  margin: 3px; 
 }
 #six{
   text-align: center;

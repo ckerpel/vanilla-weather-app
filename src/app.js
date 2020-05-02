@@ -47,8 +47,8 @@ let nowDay = document.querySelector("#day-hour");
 let nowMonth = document.querySelector("#month-day");
   nowMonth.innerHTML = currentMonth + " " + currentDay + ", " +  currentYear;
 
-//B.01 DEFINING LOCATIONS
-//B.00 Predefined location
+//B DEFINING LOCATION
+//B.00 Predefined location and run General function (b.99)
 search("Rio de Janeiro");
 
 //B.01 Getting Current Location info
@@ -67,10 +67,10 @@ function defineLocation(position) {
 }
 //B.01.03 Find de City's Name and run General function (b.99)
 function getCityName(response) {
-    let city = response.data.name;
-    search(city);
+  let city = response.data.name;
+  search(city);
 }
-//B.02 Getting info entered by user
+//B.02 Getting info entered by user and run General function (b.99)
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#search-input");
@@ -81,20 +81,16 @@ function handleSubmit(event) {
 function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
-
-  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  //axios.get(apiUrl).then(dispalyForecast);
+  axios.get(apiUrl).then(displayTemperature); 
 }
 
-
+//C.01 Updating HTML
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#where");
   let countryElement = document.querySelector("#country");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
-  let precipitationElement = document.querySelector("#precipitation");
   let windElement = document.querySelector("#wind");
   //let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
@@ -113,8 +109,34 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  let latForecast = response.data.coord.lat;
+  let lonForecast = response.data.coord.lon;
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latForecast}&lon=${lonForecast}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
+//C.04 Up Forecast
+function displayForecast(response) {
+  for (let i = 1; i < 7; i ++) {
+    let forecast = response.data.daily[i];
+    let dayElement = document.querySelector(`#day${i}`);
+    let maxElement = document.querySelector(`#max${i}`);
+    let minElement = document.querySelector(`#min${i}`);
+    let icon = document.querySelector(`#icon${i}`);
+    let next_day = formatDay(forecast.dt*1000);
+    let comma_index = next_day.indexOf(",");
+    
+    dayElement.innerHTML = next_day.slice(0,comma_index);
+    maxElement.innerHTML = `${Math.round(forecast.temp.max)}°`;
+    minElement.innerHTML = `${Math.round(forecast.temp.min)}°`;
+    icon.setAttribute('src',`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`);
+    icon.setAttribute('alt',`${forecast.weather[0].description}`);
+  }
+}
+
+//C.03 Fahrenheit Link
 function displayFahTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -125,6 +147,7 @@ function displayFahTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahTemperature);
 }
 
+//C.04 Celsius Link
 function displayCelTemperature(event) {
   event.preventDefault();
   celLink.classList.add("active");
