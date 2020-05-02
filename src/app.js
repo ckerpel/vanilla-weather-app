@@ -60,8 +60,8 @@ function formatHours(timestamp){
     return `${currentMonth} ${currentDay}, ${currentYear}`;
   }
 //B DEFINING LOCATION
-//B.00 Predefined location and run General function (b.99)
-search("Rio de Janeiro");
+//B.00 Predefined location (Rio de Janeiro) and run General function (b.99)
+searchByName("Rio de Janeiro");
 
 //B.01 Getting Current Location info
 //B.01.01 Pop Up
@@ -79,21 +79,27 @@ function defineLocation(position) {
 }
 //B.01.03 Find de City's Name and run General function (b.99)
 function getCityName(response) {
-  let city = response.data.name;
-  search(city);
+  let cityID = response.data.id;
+  searchById(cityID);
 }
+
 //B.02 Getting info entered by user and run General function (b.99)
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#search-input");
-  search(cityInputElement.value);
+  searchByName(cityInputElement.value);
 }
-//B.99 General Function to call Any City 
-function search(city) {
+//B.99.01 General Function to call Any City ID
+function searchById(cityID) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?id=${cityID}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature); 
-  //axios.get(apiUrl).then(displayForecast);
+}
+//B.99.02 General Function to call Any City Name
+function searchByName(cityname) {
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature); 
 }
 
 //C.01 Updating HTML
@@ -110,12 +116,11 @@ function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   //C.01.02 Updating the HTML if live data
+  //All the items except DDD+HH:MM MMM+DD+YYYY
   celTemperature = response.data.main.temp;
   temperatureElement.innerHTML = `${Math.round(celTemperature)}°`;
-  cityElement.innerHTML = response.data.name;
+  cityElement.innerHTML = `${response.data.name}, `;
   countryElement.innerHTML = response.data.sys.country;
-  nowDayElement.innerHTML = formatDate(response.data.dt * 1000) + " ,"+ formatHours(response.data.dt * 1000);
-  nowMonthElement.innerHTML = formatFullDate(response.data.dt * 1000);
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
@@ -124,6 +129,16 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  //Bring Date info based on the browser
+  //nowDayElement.innerHTML = formatDate(response.data.dt * 1000) + " ,"+ formatHours(response.data.dt * 1000);
+  //nowMonthElement.innerHTML = formatFullDate(response.data.dt * 1000);
+
+  //Bring Date info based on the timezone
+  let today = new Date(); 
+  let inputCityTimezone = response.data.timezone; 
+  let todayCityTimezone = today.setHours(today.getUTCHours() + inputCityTimezone/3600); //returns the miliseconds since January 1, 1970 00:00:00 UTC of the input_city
+  nowDayElement.innerHTML = formatDate(todayCityTimezone) + " ,"+ formatHours(todayCityTimezone);
+  nowMonthElement.innerHTML = formatFullDate(response.data.dt * 1000);
 
   let latForecast = response.data.coord.lat;
   let lonForecast = response.data.coord.lon;
@@ -135,7 +150,7 @@ function displayTemperature(response) {
 //C.04 Up Forecast
 //C.04.01 Up Forecast
 function displayForecast(response) {
-  for (let i = 1; i < 7; i ++) {
+   for (let i = 1; i < 7; i ++) {
       forecast = response.data.daily[i];
       let dayElement = document.querySelector(`#day${i}`);
       let maxElement = document.querySelector(`#max${i}`);
@@ -159,7 +174,7 @@ function displayFahTemperature(event) {
   celLink.classList.remove("active");
   fahLink.classList.add("active");
   let fahTemperature = (celTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahTemperature);
+  temperatureElement.innerHTML = `${Math.round(fahTemperature)}°`;
   //Changing Scale to Forecast Dashboard 
   for (let j = 1; j < 7; j ++) {
     let maxElement = document.querySelector(`#max${j}`);
@@ -171,7 +186,7 @@ function displayFahTemperature(event) {
     minElement.innerHTML = `${Math.round((minCelsius*9 )/5 + 32)}°`;
   } 
   fahLink.removeEventListener('click',displayFahTemperature); 
-  ceLink.addEventListener("click",displayCelTemperature); 
+  celLink.addEventListener("click",displayCelTemperature); 
 }
 //C.04.91.01 Celsius
 function displayCelTemperature(event) {
@@ -180,7 +195,7 @@ function displayCelTemperature(event) {
   celLink.classList.add("active");
   fahLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celTemperature);
+  temperatureElement.innerHTML = `${Math.round(celTemperature)}°`;
   //Changing Scale to Forecast Dashboard 
   for (let j = 1; j < 7; j ++) {
   let maxElement = document.querySelector(`#max${j}`);
