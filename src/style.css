@@ -134,20 +134,30 @@ a {
   color:#00796B;
 }
 .card-group {
-  display: flex;
   padding-top: 20px;
   margin: 0px; 
 }
 .card-text{
    font-weight: bold;
+   text-align: center;
 }
+.card-temp{
+   text-align: center;
+ }
+
 #six{
   text-align: center;
   line-height: 18px;
   top: 15px;
 }
+
+.card-text{
+  margin: 0px 0px 0px 0px;
+  padding:0px 0px 0px 0px; 
+}
+
 #group-card-first{
-   padding-top: 15px;
+   padding-top: 0px;
    padding-bottom: 0px;
 }
 #group-card-second{
