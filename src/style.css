@@ -141,6 +141,18 @@ a {
 .card-text{
    font-weight: bold;
 }
+.card-body{
+   margin: 0px 0px 0px 0px;
+   padding:0px 0px 0px 0px; 
+   text-align: center;
+}
+#group-card-first{
+   padding-top: 10px;
+   border-bottom:black;
+}
+#group-card-second{
+   padding-top: 0px;
+}
 
 #six{
   text-align: center;
@@ -150,14 +162,7 @@ a {
 
 
 
-#group-card-first{
-   padding-top: 0px;
-   padding-bottom: 0px;
-}
-#group-card-second{
-   padding-top: 0px;
-   padding-bottom: 0px;
-}
+
 #open-source{
   font-size: 12px;
   display: block;
