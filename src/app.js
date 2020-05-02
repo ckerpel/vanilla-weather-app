@@ -1,52 +1,64 @@
-//A. LEFT SIDE: CURRENT TIME
-//A.00 Declaring General Variables needed
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let today = days[now.getDay()];
-let hour = now.getHours()
-if(hour < 10){
-  hour = `0${hour}`;
+//A. CURRENT TIME
+//A.00 Finding the Day
+function formatDate(timestamp){
+//A.00.01 Get Now  
+  let date = new Date(timestamp);
+//A.00.02 Formating Day's Name's
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let today = days[date.getDay()];
+  return `${today}`
 }
-let minutes =  now.getMinutes();
-if (minutes <10){
+//A.01 Finding the Hour:Minutes
+function formatHours(timestamp){
+  //A.01.01 Get Now  
+  let date = new Date(timestamp);
+  //A.01.02 Getting only Hour
+  let hours = date.getHours()
+  //A.01.02.01 Adding zeros to hours less than 10
+  if(hours < 10){
+  hour = `0${hours}`;
+  }
+  //A.01.03 Getting only Hour
+  let minutes =  date.getMinutes();
+  //A.01.03.01 Adding zeros to minutes less than 10
+  if (minutes <10){
   minutes = `0${minutes}`;
-} 
-let currentTime = hour + ":" + minutes;
-
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-let currentMonth = months[now.getMonth()];
-let currentDay = now.getDate();
-let currentYear = now.getFullYear();
-
-//A.01 Defining specific output: DAY NAME + HOUR (Improvements required: Add zero. )
-let nowDay = document.querySelector("#day-hour");
-  nowDay.innerHTML = today + ", " + currentTime;
-
-//A.02 Defining specific output: DATE  
-let nowMonth = document.querySelector("#month-day");
-  nowMonth.innerHTML = currentMonth + " " + currentDay + ", " +  currentYear;
-
+  }
+  return `${hours}:${minutes}`;
+}
+//A.02 Finding the Month+Day+Year
+  function formatFullDate(timestamp){
+    //A.00.01 Get Now  
+    let date = new Date(timestamp);
+    //A.00.02 Getting Month and Formating Month's Name
+    let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+    ];
+    let currentMonth = months[date.getMonth()];
+    //A.00.03 Getting Day, Year and Output MMMM DD, YYYY
+    let currentDay = date.getDate();
+    let currentYear = date.getFullYear();
+    return `${currentMonth} ${currentDay}, ${currentYear}`;
+  }
 //B DEFINING LOCATION
 //B.00 Predefined location and run General function (b.99)
 search("Rio de Janeiro");
@@ -83,29 +95,32 @@ function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature); 
-  axios.get(apiUrl).then(displayForecast);
+  //axios.get(apiUrl).then(displayForecast);
 }
 
 //C.01 Updating HTML
 function displayTemperature(response) {
+  //C.01.01 Defining the place of info inside HTML
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#where");
   let countryElement = document.querySelector("#country");
+  let nowDayElement = document.querySelector("#day-hour");
+  let nowMonthElement = document.querySelector("#month-day");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  //let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  //C.01.02 Updating the HTML if live data
   celTemperature = response.data.main.temp;
-
   temperatureElement.innerHTML = Math.round(celTemperature);
   cityElement.innerHTML = response.data.name;
   countryElement.innerHTML = response.data.sys.country;
+  nowDayElement.innerHTML = formatDate(response.data.dt * 1000) + " ,"+ formatHours(response.data.dt * 1000);
+  nowMonthElement.innerHTML = formatFullDate(response.data.dt * 1000);
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  //dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -124,33 +139,6 @@ function displayTemperature(response) {
 //  let hoje = new Date();
 //  today = days[hoje.getDay()];
  
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = null;
-  let forecast = null;
-
-  for (let index = 1; index < 7; index++) {
-    forecast = response.data.list[index];
-    forecastElement.innerHTML += `
-    <div class="col-2">
-      <h3>
-        ${formatHours(forecast.dt * 1000)}
-      </h3>
-      <img
-        src="http://openweathermap.org/img/wn/${
-          forecast.weather[0].icon
-        }@2x.png"
-      />
-      <div class="weather-forecast-temperature">
-        <strong>
-          ${Math.round(forecast.main.temp_max)}°
-        </strong>
-        ${Math.round(forecast.main.temp_min)}°
-      </div>
-    </div>
-  `;
-  }
-}
 
 //C.03 Fahrenheit Link
 function displayFahTemperature(event) {
