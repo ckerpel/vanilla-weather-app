@@ -130,23 +130,6 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
     
-  backgroungColor.call();
-  
-    function backgroungColor(){
-    iconDayNight = response.data.weather[0].icon;
-    iconSetting = iconDayNight.slice(2);  
-    backgroundSetting = `${iconSetting}${response.data.weather[0].description}`;
-    if(iconSetting = "d")
-      {document.body.style.backgroundColor = "linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(11,132,145,1) 91.1% )"}
-      else if(iconSetting = "n")
-      {document.body.style.backgroundColor = "linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(11,132,145,1) 91.1% )"}
-      else (backgroundSetting === null)
-      {document.body.style.backgroundColor = "linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(11,132,145,1) 91.1% )"}
-    
-    console.log(backgroundSetting);
-    console.log(iconDayNight);
-    console.log(iconSetting );
-  }
 
 
     
